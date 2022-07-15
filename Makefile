@@ -25,6 +25,6 @@ install-man: ./doc/phash.1.md ./doc/phash.3.md
 ## -- license --
 install: install-license
 install-license: LICENSE
-	mkdir -p $(DESTDIR)$(PREFIX)/share/c-phash
-	cp LICENSE $(DESTDIR)$(PREFIX)/share/c-phash
+	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/c-phash
+	cp LICENSE $(DESTDIR)$(PREFIX)/share/doc/c-phash
 ## -- license --
