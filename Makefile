@@ -15,12 +15,16 @@ install: $(PROG_PHASH) str/phash.h
 clean:
 	rm -f $(PROG_PHASH)
 ## -- manpages --
-install: install-man
-install-man: ./doc/phash.1.md ./doc/phash.3.md 
+MAN_1=./doc/phash.1 
+install: install-man1
+install-man1: $(MAN_1)
 	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
-	cp ./doc/phash.1 $(DESTDIR)$(PREFIX)/share/man/man1
+	cp $(MAN_1) $(DESTDIR)$(PREFIX)/share/man/man1
+MAN_3=./doc/phash.3 
+install: install-man3
+install-man3: $(MAN_3)
 	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man3
-	cp ./doc/phash.3 $(DESTDIR)$(PREFIX)/share/man/man3
+	cp $(MAN_3) $(DESTDIR)$(PREFIX)/share/man/man3
 ## -- manpages --
 ## -- license --
 install: install-license
