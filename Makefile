@@ -37,7 +37,8 @@ endif
 ifneq ($(PREFIX),)
 install: install-license
 install-license: LICENSE
-	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/c-phash
-	cp LICENSE $(DESTDIR)$(PREFIX)/share/doc/c-phash
+	@echo 'I share/doc/c-phash/LICENSE'
+	@mkdir -p $(DESTDIR)$(PREFIX)/share/doc/c-phash
+	@cp LICENSE $(DESTDIR)$(PREFIX)/share/doc/c-phash
 endif
 ## -- license --
