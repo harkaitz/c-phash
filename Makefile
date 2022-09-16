@@ -20,18 +20,18 @@ phash$(EXE): tools/phash.c str/phash.h
 	$(CC) -o $@ tools/phash.c $(CFLAGS)
 
 ## -- manpages --
-ifneq ($(PREFIX),)
-MAN_1=./doc/phash.1 
 install: install-man1
-install-man1: $(MAN_1)
-	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
-	cp $(MAN_1) $(DESTDIR)$(PREFIX)/share/man/man1
-MAN_3=./doc/phash.3 
+install-man1:
+	@echo 'I share/man/man1/'
+	@mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
+	@echo 'I share/man/man1/phash.1'
+	@cp ./doc/phash.1 $(DESTDIR)$(PREFIX)/share/man/man1
 install: install-man3
-install-man3: $(MAN_3)
-	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man3
-	cp $(MAN_3) $(DESTDIR)$(PREFIX)/share/man/man3
-endif
+install-man3:
+	@echo 'I share/man/man3/'
+	@mkdir -p $(DESTDIR)$(PREFIX)/share/man/man3
+	@echo 'I share/man/man3/phash.3'
+	@cp ./doc/phash.3 $(DESTDIR)$(PREFIX)/share/man/man3
 ## -- manpages --
 ## -- license --
 ifneq ($(PREFIX),)
