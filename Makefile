@@ -8,16 +8,20 @@ HEADERS    =str/phash.h
 ## --------------------------------------------------------
 all: $(PROGRAMS)
 install: $(PROGRAMS) $(HEADERS)
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	mkdir -p $(DESTDIR)$(PREFIX)/include/str
-	cp $(PROGRAMS) $(DESTDIR)$(PREFIX)/bin
-	cp $(HEADERS)  $(DESTDIR)$(PREFIX)/include/str
+	@echo "B bin/ $(PROGRAMS)"
+	@mkdir -p $(DESTDIR)$(PREFIX)/bin
+	@cp $(PROGRAMS) $(DESTDIR)$(PREFIX)/bin
+	@echo "B include/str/ $(HEADERS)"
+	@mkdir -p $(DESTDIR)$(PREFIX)/include/str
+	@cp $(HEADERS)  $(DESTDIR)$(PREFIX)/include/str
 clean:
-	rm -f $(PROGRAMS)
+	@echo "D $(PROGRAMS)"
+	@rm -f $(PROGRAMS)
 
 ## ---------------------------------------------------------
 phash$(EXE): tools/phash.c str/phash.h
-	$(CC) -o $@ tools/phash.c $(CFLAGS)
+	@echo "B $@ $^"
+	@$(CC) -o $@ tools/phash.c $(CFLAGS)
 
 ## -- manpages --
 install: install-man1
@@ -34,11 +38,9 @@ install-man3:
 	@cp ./doc/phash.3 $(DESTDIR)$(PREFIX)/share/man/man3
 ## -- manpages --
 ## -- license --
-ifneq ($(PREFIX),)
 install: install-license
 install-license: LICENSE
 	@echo 'I share/doc/c-phash/LICENSE'
 	@mkdir -p $(DESTDIR)$(PREFIX)/share/doc/c-phash
 	@cp LICENSE $(DESTDIR)$(PREFIX)/share/doc/c-phash
-endif
 ## -- license --
